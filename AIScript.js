@@ -26,6 +26,7 @@ function crtElemText(tagName, attributeType, className, content) {
 
 function FetchAndDisplayAnimeInfo(AnimeID) {
     const res = document.getElementById("result");
+    const anchor = document.getElementById("links")
     const AnimeLink = `https://api.jikan.moe/v4/anime/${AnimeID}`;
     const AnimeInfo = fetch(AnimeLink);
 
@@ -118,12 +119,44 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
             dDesc.appendChild(hDesc);
             dDesc.appendChild(pDescription);
 
+
             res.appendChild(dImg);
             res.appendChild(dTitle);
             res.appendChild(DInfo1);
             res.appendChild(DInfo2);
             res.appendChild(dDesc);
 
+            const aTrailer = crtElem("a", "id", "Trailer");
+
+            if(received.data.trailer.url == null) {
+                aTrailer.setAttribute("href", "https://www.youtube.com/watch?v=ee925OTFBCA");
+            } else {
+                aTrailer.setAttribute("href", received.data.trailer.url);
+            }
+            let img = crtElem("img", "src", "PlayButton.png");
+            let p = crtElemText("p", "id", " ", "Watch Trailer Now!");
+
+            aTrailer.appendChild(img);
+            aTrailer.appendChild(p);
+
+
+            const aList = crtElem("a", "id", "WatchList");
+            aList.setAttribute("href", "WatchList.html?id="+AnimeID); // this wont go to a link
+            img = crtElem("img", "src", "check.png");
+            p = crtElemText("p", "id", "", "Add to List");
+            aList.appendChild(img);
+            aList.appendChild(p)
+
+            const aFav = crtElem("a", "id", "Favorite");
+            aFav.setAttribute("href", "Favorite.html?id="+AnimeID); // this wont go to a link
+            img = crtElem("img", "src", "star.png");
+            p = crtElemText("p", "id", "", "Add to Favorites");
+            aFav.appendChild(img);
+            aFav.appendChild(p)
+            
+            anchor.appendChild(aTrailer);
+            anchor.appendChild(aList); 
+            anchor.appendChild(aFav); 
         }
     );
 }
