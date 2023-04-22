@@ -49,5 +49,47 @@
 }
 li:nth-child(1) {
     position: relative;
-    right:40em;
+    right:35em;
+}
+#AnimImages {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+img {
+    width: 10em;
+    justify-self: flex-start;
+    height: 20em;;
+}
+.Anime {
+    width: 160px;
+    height: 320px;
+    background-color: white;
+    
+}
+.Anime:hover p {
+    display: block;
+}
+.Anime:hover {
+    animation-name: getLarge;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.Anime:hover img {
+    opacity: 0.5;
+    color: black;
+}
+p {
+    position: relative;
+    display: none;
+    top: -330px;
+    font-weight: bolder;
+    width: 100px; 
+    font-size: large;
+}
+
+@keyframes getLarge {
+    from {scale: 1;}
+    to {scale: 1.2;}
 }
