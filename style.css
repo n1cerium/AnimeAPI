@@ -1,0 +1,44 @@
+.SearchInput, h1 {
+    display: flex;
+    justify-content: center;
+}
+.SearchBox {
+    width: 500px;
+    height: 30px;
+}
+#nav-container {
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    height: 100px;
+    background-color: orange;
+    text-align: center;
+}
+
+#nav-container ul {
+    list-style-type:none;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#nav-container > ul{
+    display:flex;
+    font-size: 2em;
+    flex-direction: row;
+}
+
+#nav-container > ul > a{
+    flex-basis: 10%;
+    text-decoration: none;
+    flex-grow: 2;
+    
+}
+#nav-container div {
+    border: 2px black solid;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+#nav-container li {
+    text-align: center;
+    margin: 10px;
+}
