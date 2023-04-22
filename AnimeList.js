@@ -1,25 +1,30 @@
-
-
-
-
 function SearchAnime() {
-    let res = document.getElementById("result");
+    let postRes = document.getElementById("result");
+    let res = document.getElementById("SearchResult");
     let name = "";
-    if(srch.value.includes(" ")) {
-        name = srch.value.replace(" ", "%20%");
-    } else {
-        name = srch.value
+    if(res.value.includes(" ")) {
+        name = res.value.replace(" ", "%20%");
+    } else {    
+        name = res.value;
     }
+    name = name.toLowerCase();
     const link = `https://api.jikan.moe/v4/anime?q=${name}`;
+    console.log(link);
     const AnimList = fetch(link);
 
-    AnimeList.then(
+    AnimList.then(
         function(response) {
             return response.json();
         }
     ).then(
         function(received) {
             console.log(received);
+            if(received.data.length == 0) {
+                postRes.appendChild(document.createElement('p').appendChild(document.createTextNode("No Result Found!")));
+            }
+            for(let i = 0; i < received.data.length; i++) {
+                console.log(received.data[i].images.jpg.image_url);
+            }
         }
     );
 }
@@ -28,7 +33,7 @@ function SearchAnime() {
 function main() {
     let searchButton = document.getElementById("SearchButton");
 
-    window.addEventListener("click", SearchAnime, false);
+    searchButton.addEventListener("click", SearchAnime, false);
 
 }
 

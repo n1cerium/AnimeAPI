@@ -10,15 +10,16 @@
     display:flex;
     justify-content:flex-end;
     align-items:center;
-    height: 100px;
+    height: 80px;
     background-color: orange;
     text-align: center;
 }
 
 #nav-container ul {
+    display: flex;
     list-style-type:none;
-    margin-top: auto;
-    margin-bottom: auto;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }
 
 #nav-container > ul{
@@ -27,18 +28,26 @@
     flex-direction: row;
 }
 
-#nav-container > ul > a{
+#nav-container > ul > li{
     flex-basis: 10%;
-    text-decoration: none;
-    flex-grow: 2;
     
+}
+#nav-container a {
+    text-decoration: none;
 }
 #nav-container div {
     border: 2px black solid;
     border-radius: 25px;
     margin-left: 10px;
 }
-#nav-container li {
+#nav-container div {
     text-align: center;
     margin: 10px;
+    font-size: 25px;
+    padding: 1ch;
+    width:100px;
+}
+li:nth-child(1) {
+    position: relative;
+    right:40em;
 }
