@@ -51,6 +51,7 @@ function SearchAnime() {
                 const imgArticle = crtElem("article", "id", "AnimImages");
 
                 for(let i = 0; i < received.data.length; i++) {
+                    const aInfo = crtElem("a", "href", "AnimeInfo.html?id=" + received.data[i].mal_id);
                     const dAnimInfo = crtElem("div", "class", "Anime");
                     const imgRes = crtElem("img", "id", received.data[i].mal_id);
                     console.log()
@@ -59,8 +60,8 @@ function SearchAnime() {
                     imgRes.setAttribute("src", received.data[i].images.jpg.image_url);
                     dAnimInfo.appendChild(imgRes);
                     dAnimInfo.appendChild(pTitle);
-
-                    imgArticle.appendChild(dAnimInfo);
+                    aInfo.appendChild(dAnimInfo);
+                    imgArticle.appendChild(aInfo);
 
                     
                 }    
