@@ -76,6 +76,8 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
                 pStatus = crtElemText("p", "id", "Status", "Status: OnGoing");
                 pBroadcast = crtElemText("p", "id", "Broadcast", received.data.broadcast.string);
                 DInfo1.appendChild(pBroadcast);
+            } else if (received.data.status == "Not yet aired") {
+                pStatus = crtElemText("p", "id", "Status", "Status: Not yet aired");
             }
             DInfo1.appendChild(pStatus);
             
@@ -110,7 +112,7 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
 
             const dDesc = crtElem("div", "id", "DescDiv");
             const hDesc = crtElemText("h3", "id", "Desc", "Description: ");
-            let desc = received.data.synopsis;
+            let desc = received.data.synopsis == null ? "Unknown" : received.data.synopsis
             if(desc.includes("[Written by MAL Rewrite]")) {
                 desc = received.data.synopsis.replace("[Written by MAL Rewrite]", "");
             }

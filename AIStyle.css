@@ -103,7 +103,7 @@ li:nth-child(1) {
 #links a {
     background-color: orange;
     display: flex;
-    margin-top: 50px;
+    margin-top: 3%;
     width: 10%;
     border: 2px black solid;
     border-radius: 50px;
