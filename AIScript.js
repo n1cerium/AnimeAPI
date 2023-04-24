@@ -22,11 +22,34 @@ function crtElemText(tagName, attributeType, className, content) {
 
     return elem;
 }
-
+function IsExistingList(data, currentStorage) {
+    for(let i = 0; i < currentStorage.length; i++) {
+        if(JSON.stringify(data[0]) === JSON.stringify(currentStorage[i][0])){
+            return true;
+        } else {
+            console.log("NotEqual");
+        }
+    }
+    return false;
+}
+function StoreListToLocal(DataToStore) {
+    let s_DataToStore = localStorage.getItem("Lists");
+    s_DataToStore = s_DataToStore != null ? JSON.parse(s_DataToStore) : [];
+    // console.log(s_DataToStore)
+    if(IsExistingList(DataToStore, s_DataToStore) != true) {
+        s_DataToStore.push(DataToStore);
+    } else {
+        console.log("You have already added this to the list");
+    }
+    
+    localStorage.setItem("Lists", JSON.stringify(s_DataToStore));
+    // console.log(localStorage);
+    console.log(localStorage.getItem("Lists"));
+}
 
 function FetchAndDisplayAnimeInfo(AnimeID) {
+    // localStorage.clear();
     const res = document.getElementById("result");
-    const anchor = document.getElementById("links")
     const AnimeLink = `https://api.jikan.moe/v4/anime/${AnimeID}`;
     const AnimeInfo = fetch(AnimeLink);
 
@@ -128,37 +151,24 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
             res.appendChild(DInfo2);
             res.appendChild(dDesc);
 
-            const aTrailer = crtElem("a", "id", "Trailer");
+            const aTrailer = document.getElementById("Trailer");
 
             if(received.data.trailer.url == null) {
                 aTrailer.setAttribute("href", "https://www.youtube.com/watch?v=ee925OTFBCA");
             } else {
                 aTrailer.setAttribute("href", received.data.trailer.url);
             }
-            let img = crtElem("img", "src", "PlayButton.png");
-            let p = crtElemText("p", "id", " ", "Watch Trailer Now!");
 
-            aTrailer.appendChild(img);
-            aTrailer.appendChild(p);
-
-
-            const aList = crtElem("a", "id", "WatchList");
-            aList.setAttribute("href", "WatchList.html?id="+AnimeID); // this wont go to a link
-            img = crtElem("img", "src", "check.png");
-            p = crtElemText("p", "id", "", "Add to List");
-            aList.appendChild(img);
-            aList.appendChild(p)
-
-            const aFav = crtElem("a", "id", "Favorite");
-            aFav.setAttribute("href", "Favorite.html?id="+AnimeID); // this wont go to a link
-            img = crtElem("img", "src", "star.png");
-            p = crtElemText("p", "id", "", "Add to Favorites");
-            aFav.appendChild(img);
-            aFav.appendChild(p)
-            
-            anchor.appendChild(aTrailer);
-            anchor.appendChild(aList); 
-            anchor.appendChild(aFav); 
+            let storeInfoLocal = [{
+                id: AnimeID,
+                title: title,
+                status: received.data.status,
+                episodes: received.data.episodes,
+                genre: genres,
+                duration: received.data.duration
+            }];
+            const watchlist = document.getElementById("Watchlist");
+            watchlist.addEventListener("click", function() {StoreListToLocal(storeInfoLocal)}, false);
         }
     );
 }
@@ -169,6 +179,10 @@ function main() {
     const currentURL = window.location.href;
     const AnimeID = getIDFromURL(currentURL);
     FetchAndDisplayAnimeInfo(AnimeID);
+
+
+    const watchlist = document.getElementById("Watchlist");
+    console.log(watchlist);
 }
 
 

@@ -71,9 +71,12 @@ li:nth-child(1) {
 #ImageDiv {
     grid-area: img;
     margin-right: 10px;
+    width: 20em;
+    height: 33em;
 }
 #TitleDiv {
     grid-area: title;
+
 }
 #Info1 {
     grid-area: info1;
@@ -84,12 +87,10 @@ li:nth-child(1) {
 #DescDiv {
     grid-area: desc;
     border-radius: 25px;
-    padding: 10px;
+    padding-left: 10px;
     border: 2px orange solid;
     background-color: lightgreen;
 }
-
-
 #links {
     display: flex;
     justify-content: center;
@@ -100,7 +101,7 @@ li:nth-child(1) {
     margin-left: 10px;
     padding: 10px;
 }
-#links a {
+#links div, #links a {
     background-color: orange;
     display: flex;
     margin-top: 3%;
@@ -117,4 +118,10 @@ li:nth-child(1) {
 }
 #Favorite img {
     margin-left: 0;
+}
+#links div {
+    align-content: center;
+}
+#Watchlist p{
+    margin-top: 13%;
 }

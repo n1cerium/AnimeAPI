@@ -22,7 +22,7 @@ function SearchAnime() {
     let name = "";
     if(res.value.includes(" ")) {
         name = res.value.replace(" ", "%20%");
-    } else {    
+    } else {        
         name = res.value;
     }
     name = name.toLowerCase();
