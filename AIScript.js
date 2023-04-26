@@ -35,7 +35,7 @@ function IsExistingList(data, currentStorage) {
 function StoreListToLocal(DataToStore) {
     let s_DataToStore = localStorage.getItem("Lists");
     s_DataToStore = s_DataToStore != null ? JSON.parse(s_DataToStore) : [];
-    // console.log(s_DataToStore)
+    console.log(s_DataToStore)
     if(IsExistingList(DataToStore, s_DataToStore) != true) {
         s_DataToStore.push(DataToStore);
     } else {
@@ -48,7 +48,7 @@ function StoreListToLocal(DataToStore) {
 }
 
 function FetchAndDisplayAnimeInfo(AnimeID) {
-    // localStorage.clear();
+    //localStorage.clear();
     const res = document.getElementById("result");
     const AnimeLink = `https://api.jikan.moe/v4/anime/${AnimeID}`;
     const AnimeInfo = fetch(AnimeLink);
@@ -163,9 +163,12 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
                 id: AnimeID,
                 title: title,
                 status: received.data.status,
+                season: season,
                 episodes: received.data.episodes,
                 genre: genres,
-                duration: received.data.duration
+                duration: received.data.duration,
+                image : received.data.images.jpg.large_image_url,
+                description : desc
             }];
             const watchlist = document.getElementById("Watchlist");
             watchlist.addEventListener("click", function() {StoreListToLocal(storeInfoLocal)}, false);

@@ -53,7 +53,7 @@ function SearchAnime() {
                 for(let i = 0; i < received.data.length; i++) {
                     const aInfo = crtElem("a", "href", "AnimeInfo.html?id=" + received.data[i].mal_id);
                     const dAnimInfo = crtElem("div", "class", "Anime");
-                    const imgRes = crtElem("img", "id", received.data[i].mal_id);
+                    const imgRes = crtElem("img", "id", "id" + received.data[i].mal_id);
                     console.log()
                     const pTitle = crtElemText("p", "class", "Title", received.data[i].title);
                     
