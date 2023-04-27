@@ -125,3 +125,6 @@ li:nth-child(1) {
 #Watchlist p{
     margin-top: 13%;
 }
+#Watchlist, #Favorite {
+    cursor: pointer;
+}

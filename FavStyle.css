@@ -1,0 +1,113 @@
+.SearchInput, h1 {
+    display: flex;
+    justify-content: center;
+}
+.SearchBox {
+    width: 500px;
+    height: 30px;
+}
+#nav-container {
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    height: 90px;
+    background-color: orange;
+    text-align: center;
+}
+
+#nav-container ul {
+    display: flex;
+    list-style-type:none;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+}
+
+#nav-container > ul{
+    display:flex;
+    font-size: 2em;
+    flex-direction: row;
+}
+
+#nav-container > ul > li{
+    flex-basis: 10%;
+    
+}
+#nav-container a {
+    text-decoration: none;
+}
+#nav-container div {
+    border: 2px black solid;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+#nav-container div {
+    text-align: center;
+    margin: 10px;
+    font-size: 25px;
+    padding: 1ch;
+    width:100px;
+}
+li:nth-child(1) {
+    position: relative;
+    right:40em;
+}
+#result {
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 1%;    
+    justify-content: center;
+}
+
+.Item {
+   margin-top: 1em;
+    width: 14.15em;
+    height: 20em;
+    background-color: white;
+}
+h3, .xImage {
+    position: relative;
+    display: none;
+}
+
+
+.AnimImage {
+    height: 20em;
+}
+.Item:hover h3, .Item:hover .xImage {
+    display: block;
+}
+.Item:hover .AnimImage {
+    opacity: 0.6;
+}
+.Item:hover {
+    animation-name: getLarge;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.Item:not(:hover) {
+    animation-name: getSmall;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.xImage:hover {
+    cursor: pointer;
+}
+h3 {    
+    top: -5em;
+    margin-left: 0.5em;
+    color: black;
+}
+.xImage {
+    top: -23em;
+    height: 2em;
+    float: right;
+    margin-right: 0.3em;
+}
+@keyframes getLarge {
+    from {scale: 1;}
+    to {scale: 1.2;}
+}
+@keyframes getSmall {
+    from {scale: 1.2;}
+    to {scale: 1;}
+}

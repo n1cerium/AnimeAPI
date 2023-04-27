@@ -32,6 +32,20 @@ function IsExistingList(data, currentStorage) {
     }
     return false;
 }
+function StoreFavoritetoLocal(FavoriteItem) {
+    let s_DataToStore = localStorage.getItem("Favorite");
+    s_DataToStore = s_DataToStore != null ? JSON.parse(s_DataToStore) : [];
+    console.log(s_DataToStore)
+    if(IsExistingList(FavoriteItem, s_DataToStore) != true) {
+        s_DataToStore.push(FavoriteItem);
+    } else {
+        console.log("You have already added this to the list");
+    }
+    
+    localStorage.setItem("Favorite", JSON.stringify(s_DataToStore));
+    // console.log(localStorage);
+    console.log(localStorage.getItem("Favorite"));
+}
 function StoreListToLocal(DataToStore) {
     let s_DataToStore = localStorage.getItem("Lists");
     s_DataToStore = s_DataToStore != null ? JSON.parse(s_DataToStore) : [];
@@ -170,8 +184,15 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
                 image : received.data.images.jpg.large_image_url,
                 description : desc
             }];
+            let storeFavorite = [{
+                id: AnimeID,
+                image : received.data.images.jpg.image_url,
+                title : title
+            }]
             const watchlist = document.getElementById("Watchlist");
             watchlist.addEventListener("click", function() {StoreListToLocal(storeInfoLocal)}, false);
+            const favoriteList = document.getElementById("Favorite");
+            favoriteList.addEventListener("click", function() {StoreFavoritetoLocal(storeFavorite)}, false);
         }
     );
 }

@@ -1,4 +1,4 @@
-const {physics, styler} = popmotion;
+const {physics, tween, styler} = popmotion;
 
 let allList;
 
