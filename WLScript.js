@@ -16,6 +16,30 @@ function crtElemText(tagName, attributeType, className, content) {
 
     return elem;
 }
+function IsExistingList(data, currentStorage) {
+    for(let i = 0; i < currentStorage.length; i++) {
+        if(JSON.stringify(data[0]) === JSON.stringify(currentStorage[i][0])){
+            return true;
+        } else {
+            console.log("NotEqual");
+        }
+    }
+    return false;
+}
+function StoreFavoritetoLocal(FavoriteItem) {
+    let s_DataToStore = localStorage.getItem("Favorite");
+    s_DataToStore = s_DataToStore != null ? JSON.parse(s_DataToStore) : [];
+    console.log(s_DataToStore)
+    if(IsExistingList(FavoriteItem, s_DataToStore) != true) {
+        s_DataToStore.push(FavoriteItem);
+    } else {
+        console.log("You have already added this to the list");
+    }
+    
+    localStorage.setItem("Favorite", JSON.stringify(s_DataToStore));
+    // console.log(localStorage);
+    console.log(localStorage.getItem("Favorite"));
+}
 function shortenWord(desc) {
     let splitDesc = desc.split(" ");
     let newDesc = [];
@@ -104,6 +128,15 @@ function display() {
         newDiv.appendChild(Links);
 
         res.appendChild(newDiv);
+
+        let storeFavorite = [{
+            id: current.id,
+            image : current.image,
+            title : current.title
+        }];
+
+        const favoriteList = document.getElementsByClassName("Favorite");
+        favoriteList[0].addEventListener("click", function() {StoreFavoritetoLocal(storeFavorite)}, false);
 
 
     }

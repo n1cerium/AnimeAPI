@@ -188,7 +188,7 @@ function FetchAndDisplayAnimeInfo(AnimeID) {
                 id: AnimeID,
                 image : received.data.images.jpg.image_url,
                 title : title
-            }]
+            }];
             const watchlist = document.getElementById("Watchlist");
             watchlist.addEventListener("click", function() {StoreListToLocal(storeInfoLocal)}, false);
             const favoriteList = document.getElementById("Favorite");
