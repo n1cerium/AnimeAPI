@@ -49,7 +49,7 @@
 }
 li:nth-child(1) {
     position: relative;
-    right:35em;
+    right: 250%;
 }
 #AnimImages {
     display: flex;

@@ -49,7 +49,7 @@
 }
 li:nth-child(1) {
     position: relative;
-    right:40em;
+    right: 250%;
 }
 #result {
     display:grid;

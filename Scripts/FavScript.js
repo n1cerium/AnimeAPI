@@ -24,7 +24,7 @@ function display() {
     for(let i = 0; i < currentlist.length; i++) {
         const item = crtElem("div", "class", "Item");
         let title = crtElemText("h3", "class", "title", currentlist[i][0].title);
-        let crossImage = crtElem("img", "src", "x_img.png");
+        let crossImage = crtElem("img", "src", "../Images/x_img.png");
         let img = crtElem("img", "src", currentlist[i][0].image);
         img.setAttribute("class", "AnimImage");
         crossImage.setAttribute("class", "xImage");
@@ -55,7 +55,7 @@ function start() {
         console.log(item);
         localStorage.setItem("Favorite", JSON.stringify(allList));
         setTimeout(() => {
-            res.removeChild(item[i]); console.log("dsds")
+            res.removeChild(item[i]);
           }, "3000");
        });
         

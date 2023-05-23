@@ -110,14 +110,14 @@ function display() {
 
         const Links = crtElem("div", "class", "links");
         let divElement = crtElem("div", "class", "Favorite");
-        let image = crtElem("img", "src", "star.png");
+        let image = crtElem("img", "src", "../Images/star.png");
         let paragraph = crtElemText("p", "class", "", "Add to Favorite");
         divElement.appendChild(image);
         divElement.appendChild(paragraph);
         Links.appendChild(divElement);
 
         divElement = crtElem("div", "class", "Remove");
-        image = crtElem("img", "src", "star.png");
+        image = crtElem("img", "src", "../Images/x_img.png");
         paragraph = crtElemText("p", "class", "", "Remove From List");
         divElement.appendChild(image);
         divElement.appendChild(paragraph);
