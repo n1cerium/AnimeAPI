@@ -48,8 +48,9 @@
     width:100px;
 }
 li:nth-child(1) {
-    position: relative;
-    right: 250%;
+    flex: 0 0 100%;
+    margin: 0 auto;
+    padding: 0;
 }
 #AnimImages {
     display: flex;

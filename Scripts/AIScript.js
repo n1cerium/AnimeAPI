@@ -1,4 +1,4 @@
-
+const {physics, tween, styler} = popmotion;
 
 function getIDFromURL(link) {
     let idx = link.indexOf("id");
@@ -205,8 +205,21 @@ function main() {
     FetchAndDisplayAnimeInfo(AnimeID);
 
 
-    const watchlist = document.getElementById("Watchlist");
-    console.log(watchlist);
+    const links = document.querySelectorAll(".link");
+    for(let i = 0; i < links.length; i++) {
+      links[i].addEventListener("mouseover", function() {
+          const linkStyle = popmotion.styler(links[i]);
+          popmotion.physics({
+            from: 0,
+            velocity: 100,
+            friction: 0.3,
+            acceleration: 50,
+            to: 0,
+            springStrength: 150      
+          }).start((v) => linkStyle.set('x', v));
+          
+      });
+    }
 }
 
 
